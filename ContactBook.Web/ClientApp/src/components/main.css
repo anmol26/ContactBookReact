@@ -41,10 +41,10 @@ body {
         margin-right: 20px;
     }
 
-    .navigations img {
-        display: inline-block;
+    .navigationBar img {
+        /*display: inline-block;*/
         position: absolute;
-        left: 20px;
+        right: 150px;
         padding-top: 8px;
     }
 
