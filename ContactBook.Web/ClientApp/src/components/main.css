@@ -41,12 +41,12 @@ body {
         margin-right: 20px;
     }
 
-img {
-    display: inline-block;
-    position: absolute;
-    right: 20px;
-    padding-top: 8px;
-}
+    .navigations img {
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        padding-top: 8px;
+    }
 
 .box {
     margin-left: 25px;

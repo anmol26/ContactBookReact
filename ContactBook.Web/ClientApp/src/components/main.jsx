@@ -3,19 +3,19 @@
 
 const viewBox = document.querySelector("#viewBox");
 
-function showContactInfo(id) {
-    const contact = contacts.find(c => c.id === id);
-    viewBox.innerHTML = `<p style="font-size:30px; font-weight:bold; color:#333333">${contact.name}
-    <a><img src="../Images/edit1.jpg">Edit</a>
-    <a><img src="../Images/delete1.png">Delete</a>
-    </p><br>
-    <p>Email: ${contact.email}</p><br>
-    <p>Mobile: +91 ${contact.mobile}</p>
-    <p>Landline: ${contact.landline}</p><br>
-    <p>Website: https://${contact.website}</p><br>
-    <p>Address: ${contact.address}</p><br>
-    `;
-}
+//function showContactInfo(id) {
+//    const contact = contacts.find(c => c.id === id);
+//    viewBox.innerHTML = `<p style="font-size:30px; font-weight:bold; color:#333333">${contact.name}
+//    <a><img src="../Images/edit1.jpg">Edit</a>
+//    <a><img src="../Images/delete1.png">Delete</a>
+//    </p><br>
+//    <p>Email: ${contact.email}</p><br>
+//    <p>Mobile: +91 ${contact.mobile}</p>
+//    <p>Landline: ${contact.landline}</p><br>
+//    <p>Website: https://${contact.website}</p><br>
+//    <p>Address: ${contact.address}</p><br>
+//    `;
+//}
 
 
 
