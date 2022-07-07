@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import  './main.css';
-//import './main.jsx';
 import blog from './Images/blog-icon.png';
 import Contact from './Contact';
 import ContactList from './ContactList';
@@ -60,6 +59,7 @@ export class Home extends Component {
 
         this.setCurrContact = this.setCurrContact.bind(this);
         this.setShowForm = this.setShowForm.bind(this);
+        this.addNewEmployee = this.addNewEmployee.bind(this);
     }
 
     componentDidMount() {
@@ -73,25 +73,25 @@ export class Home extends Component {
         this.setState({ isForm: isFormShow });
     }
 
-    addNewEmployee() {
+    addNewEmployee=(event)=> {
+        event.preventDefault()
+        console.log("add neewwwwwwww hiiiiiiii");
+        console.log(event.target[0].value);
+
+        this.setState({
+            contacts: this.state.contacts.concat({
+                id: 5,
+                name: event.target[0].value,
+                email: event.target[1].value,
+                mobile: event.target[2].value,
+                landline: event.target[3].value,
+                website: event.target[4].value,
+                address: event.target[5].value
+            })
+        });
 
     }
     
-    // renderContacts() {
-    //let htmlString;
-    //let contactList = document.querySelector("#contactList");
-    //     {
-    //         contacts.forEach(contact => {
-    //         htmlString += `<div class="boxes" id="box1" onclick="showContactInfo(${contact.id})">
-    //    <p style="padding-bottom: 5px; font-size:28px;">${contact.name}</p>
-    //    <p style="margin-left:5px">${contact.email}</p>
-    //    <p style="padding-bottom: 5px; margin-left:5px">+91 ${contact.mobile}</p>
-    //  </div>`;
-    //         })
-    //     };
-    //contactList.innerHTML = htmlString;
-    //}
-
 
   render () {
     return (
@@ -120,8 +120,8 @@ export class Home extends Component {
                 <div
                     id="viewBox"
                     className="middleRight"
-                    style={{ marginLeft: "150px", marginTop: "60px", display: "inline-Block" }}>
-                    {(this.state.isForm ? <ShowForm onSubmit={this.addNewEmployee} /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
+                    style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
+                    {(this.state.isForm ? <ShowForm onClick={this.addNewEmployee} /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
                   
                 </div>
                 </div>
