@@ -72,6 +72,10 @@ export class Home extends Component {
     setShowForm(isFormShow) {
         this.setState({ isForm: isFormShow });
     }
+
+    addNewEmployee() {
+
+    }
     
     // renderContacts() {
     //let htmlString;
@@ -117,7 +121,7 @@ export class Home extends Component {
                     id="viewBox"
                     className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "inline-Block" }}>
-                    {(this.state.isForm ? <ShowForm /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
+                    {(this.state.isForm ? <ShowForm onSubmit={this.addNewEmployee} /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
                   
                 </div>
                 </div>
