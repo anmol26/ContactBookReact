@@ -1,6 +1,6 @@
 ﻿import React from 'react';
-import delete1 from '../Images/delete1.png';
-import edit from '../Images/edit1.jpg';
+import delete1 from './Images/delete1.png';
+import edit from './Images/edit1.jpg';
 
 
 class Contact extends React.Component {

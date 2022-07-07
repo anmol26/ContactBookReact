@@ -1,42 +1,21 @@
 import React, { Component } from 'react';
 import  './main.css';
 //import './main.jsx';
-import blog from '../Images/blog-icon.png';
+import blog from './Images/blog-icon.png';
 import Contact from './Contact';
 import ContactList from './ContactList';
+import ShowForm from './ShowForm';
 
 export class Home extends Component {
     static displayName = Home.name;
 
-    showForm() {
-        document.getElementById('viewBox').innerHTML =
-        `<div style="box-shadow: 0 0 10px 10px grey;">
-        <form onsubmit="addNewContact()" style="padding:30px">
-    <label for="name">Name</label><br />
-    <input type="text" id="name" name="name" value="" style="height:30px; width:100%"/><br /><br>
-    <label for="email">Email</label><br />
-    <input type="text" id="email" name="email" value="" style="height:30px; width:100%"/><br /><br>
-    <label for="mobile">Mobile</label></br>
-    <input type="text" id="mobile" name="mobile" value="" style="height:30px; width:100% display:inline-block"/>
-    <label for="landline">Landline</label>
-    <input type="text" id="landline" name="landline" value="" style="height:30px; width:50% display:inline-block"/><br /><br>
-    <label for="website">Website</label><br />
-    <input type="text" id="website" name="website" value="" style="height:30px; width:100%"/><br /><br>
-    <label for="address">Address</label><br />
-    <input type="text" id="address" name="address" value="" style="height:80px; width:100%"/><br /><br>
-    <input style="margin-left:500px; background:#468c00; padding:10px 25px 10px 25px; border:none; color:white"type="submit"  value="Add" />
-        </form>
-        </div>
-    `
-        ;
-
-    }
-
-    
 
     constructor() {
         super();
         this.state = {
+
+            isForm: false,
+
             contacts: [
                 {
                     id: 1,
@@ -80,6 +59,7 @@ export class Home extends Component {
         }
 
         this.setCurrContact = this.setCurrContact.bind(this);
+        this.setShowForm = this.setShowForm.bind(this);
     }
 
     componentDidMount() {
@@ -89,7 +69,9 @@ export class Home extends Component {
     setCurrContact(id) {
         this.setState({ currContact: this.state.contacts.find(c => c.id === id) });
     }
-
+    setShowForm(isFormShow) {
+        this.setState({ isForm: isFormShow });
+    }
     
     // renderContacts() {
     //let htmlString;
@@ -110,32 +92,33 @@ export class Home extends Component {
   render () {
     return (
       <div>
-            <div class="headingBar">
-                <div class="headingText">
+            <div className="headingBar">
+                <div className="headingText">
                     <span>Address Book</span>
                 </div>
             </div>
-            <div class="navigationBar">
-                <div class="navigations">
+            <div className="navigationBar">
+                <div className="navigations">
                     <li><a href="">HOME</a></li>
-                    <li onClick={this.showForm} style={{cursor: "pointer"}}><a>+ADD</a></li>
+                    <li onClick={() => this.setShowForm(true)} style={{cursor: "pointer"}}><a>+ADD</a></li>
                 </div>
                 <img src={blog} alt="blog-img" />
             </div>
-            <div class="middle" style={{display: "flex", flexFlow: "row wrap"}}>
-                <div style={{display: "inline-Block"}} class="middleLeft">
+            <div className="middle" style={{display: "flex", flexFlow: "row wrap"}}>
+                <div style={{display: "inline-Block"}} className="middleLeft">
                     <p style={{margin: "30px 0 20px 20px", fontSize: "18px", fontWeight: "bold"}}>
                             CONTACTS
                         </p>
-                    <div class="box" id="contactList" >
+                    <div className="box" id="contactList" >
                         <ContactList contacts={this.state.contacts} onContactSelected={this.setCurrContact} />
                         </div>
                     </div>
                 <div
                     id="viewBox"
-                    class="middleRight"
+                    className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "inline-Block" }}>
-                    {this.state.currContact ? (<Contact contact={this.state.currContact} />) : (<></>)}
+                    {(this.state.isForm ? <ShowForm /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
+                  
                 </div>
                 </div>
             
