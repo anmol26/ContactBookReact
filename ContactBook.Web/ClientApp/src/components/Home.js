@@ -75,9 +75,6 @@ export class Home extends Component {
 
     addNewEmployee=(event)=> {
         event.preventDefault()
-        console.log("add neewwwwwwww hiiiiiiii");
-        console.log(event.target[0].value);
-
         this.setState({
             contacts: this.state.contacts.concat({
                 id: 5,
@@ -89,10 +86,15 @@ export class Home extends Component {
                 address: event.target[5].value
             })
         });
+    }
 
+    deleteEmployee() {
+        console.log("hi, i am delete ")
+    }
+    editEmployee() {
+        console.log("hi, i am edit")
     }
     
-
   render () {
     return (
       <div>
@@ -121,7 +123,7 @@ export class Home extends Component {
                     id="viewBox"
                     className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
-                    {(this.state.isForm ? <ShowForm onClick={this.addNewEmployee} /> : (this.state.currContact ? <Contact contact={this.state.currContact} /> : null))}
+                    {(this.state.isForm ? <ShowForm onClick={this.addNewEmployee} /> : (this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null))}
                   
                 </div>
                 </div>
