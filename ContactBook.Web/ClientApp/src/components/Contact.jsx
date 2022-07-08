@@ -9,12 +9,11 @@ class Contact extends React.Component {
             <div className="contact">
                 <p style={{ fontSize: "30px", fontWeight: "bold", color: "#333333" }} >{this.props.contact.name}
                     <span style={{ fontSize: "15px" }}>
-                        <img src={edit} alt='edit' onClick={this.props.onEdit} style={{ marginLeft: "35px", height: "15px", width: "15px" }} />
+                        <img src={edit} alt='edit' onClick={()=>this.props.onEdit(this.props.contact.id)} style={{ marginLeft: "35px", height: "15px", width: "15px" }} />
                         Edit
                     </span>
-                    {/*{console.log(this.props.contact.name)}*/}
                     <span style={{ fontSize: "15px" }}>
-                        <img src={delete1} onClick={this.props.onDelete} alt='delete' style={{ marginLeft: "20px", height: "15px", width: "15px" }} />
+                        <img src={delete1} onClick={()=>this.props.onDelete(this.props.contact.id)} alt='delete' style={{ marginLeft: "20px", height: "15px", width: "15px" }} />
                         Delete
                     </span>
                 </p><br />

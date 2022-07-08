@@ -13,7 +13,8 @@ export class Home extends Component {
         super();
         this.state = {
 
-            isForm: false,
+            isEditForm: false,
+            isAddForm: false,
 
             contacts: [
                 {
@@ -60,6 +61,9 @@ export class Home extends Component {
         this.setCurrContact = this.setCurrContact.bind(this);
         this.setShowForm = this.setShowForm.bind(this);
         this.addNewEmployee = this.addNewEmployee.bind(this);
+        this.deleteEmployee = this.deleteEmployee.bind(this);
+        this.editEmployee = this.editEmployee.bind(this);
+
     }
 
     componentDidMount() {
@@ -69,11 +73,14 @@ export class Home extends Component {
     setCurrContact(id) {
         this.setState({ currContact: this.state.contacts.find(c => c.id === id) });
     }
-    setShowForm(isFormShow) {
-        this.setState({ isForm: isFormShow });
+    setShowForm(isEdit, isFormShow) {
+        if (isEdit)
+            this.setState({ isEditForm: isFormShow });
+        else
+            this.setState({ isAddForm: isFormShow });
     }
 
-    addNewEmployee=(event)=> {
+    addNewEmployee(event) {
         event.preventDefault()
         this.setState({
             contacts: this.state.contacts.concat({
@@ -88,11 +95,14 @@ export class Home extends Component {
         });
     }
 
-    deleteEmployee() {
-        console.log("hi, i am delete ")
+    deleteEmployee(id) {
+        let contacts = [...this.state.contacts];
+        contacts.splice(contacts.findIndex(c => c.id === id), 1);
+        this.setState({ contacts: contacts });
+        this.setState({currContact:null});
     }
     editEmployee() {
-        console.log("hi, i am edit")
+        this.setShowForm(true, true);
     }
     
   render () {
@@ -106,7 +116,7 @@ export class Home extends Component {
             <div className="navigationBar">
                 <div className="navigations">
                     <li><a href="">HOME</a></li>
-                    <li onClick={() => this.setShowForm(true)} style={{cursor: "pointer"}}><a>+ADD</a></li>
+                    <li onClick={() => this.setShowForm(false, true)} style={{cursor: "pointer"}}><a>+ADD</a></li>
                 </div>
                 <img src={blog} alt="blog-img" />
             </div>
@@ -123,7 +133,9 @@ export class Home extends Component {
                     id="viewBox"
                     className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
-                    {(this.state.isForm ? <ShowForm onClick={this.addNewEmployee} /> : (this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null))}
+                    {(this.state.isAddForm ? <ShowForm  /> : null)}
+                    {(this.state.isEditForm ? <ShowForm formData={this.state.currContact} isEdit={true } /> : null)}
+                    {(this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null)}
                   
                 </div>
                 </div>
