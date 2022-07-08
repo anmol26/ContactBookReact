@@ -10,7 +10,7 @@ class ShowForm extends React.Component {
 
     setFormData(data) {
         this.setState({ formData: data });
-        console.log(this.state.formData);
+        //console.log(this.state.formData);
     }
     render() {
         return (

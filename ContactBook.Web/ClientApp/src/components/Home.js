@@ -133,7 +133,7 @@ export class Home extends Component {
                     id="viewBox"
                     className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
-                    {(this.state.isAddForm ? <ShowForm  /> : null)}
+                    {(this.state.isAddForm ? <ShowForm onClick={this.addNewEmployee} /> : null)}
                     {(this.state.isEditForm ? <ShowForm formData={this.state.currContact} isEdit={true } /> : null)}
                     {(this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null)}
                   
