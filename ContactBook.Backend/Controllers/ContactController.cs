@@ -19,13 +19,32 @@ namespace ContactBook.Backend.Controllers
             return Ok(contactService.Get());
         }
 
-        //[Route({create})]
+
+        [Route("Create")]
         [HttpPost]
+        public IActionResult Create(PostContact contact)
+        {
 
-        public IActionResult Create(string contact) {
+            contactService.Create(contact);
+            return Ok();
+        }
 
-            bool result= contactService.Create(contact);
-            return Ok(result);
+        [Route("Delete")]
+        [HttpDelete]
+        public IActionResult Delete(int contactId)
+        {
+
+            contactService.Delete(contactId);
+            return Ok();
+        }
+
+        [Route("Update")]
+        [HttpPatch]
+        public IActionResult Update(int id, string name, string email, string mobile,
+            string landline, string website, string address) 
+        {
+            contactService.Update(id, name, email, mobile, landline, website, address);
+            return Ok();
         }
     }
 }

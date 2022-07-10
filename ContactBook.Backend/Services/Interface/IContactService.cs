@@ -6,10 +6,12 @@ namespace ContactBook.Backend.Services.Interface
 {
     public interface IContactService
     {
-        public bool Create(string contact);
-        //public bool Update(Contact contact);
-        //public bool Delete(Contact contact);
+        public void Create(PostContact contact);
         public List<Contact> Get();
+        public void Delete(int contactId);
+
+        public void Update(int id, string name, string email,
+            string mobile, string landline, string website, string address);
 
     }
 }
