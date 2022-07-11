@@ -1,15 +1,26 @@
 ﻿import React from 'react';
+import axios from 'axios'; 
 
 class ShowForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            formData: this.props.formData
+            formData: props.formData
         }
     }
-
+    //setNameData(data) {
+    //    console.log("name data start", this.state.formData.name);
+    //    this.state.formData.name = data.name;
+    //    //this.setState({formData})
+    //    console.log("name data end", this.state.formData.name);
+    //    console.log("formData", this.state.formData);
+        
+    //}
     setFormData(data) {
         this.setState({ formData: data });
+        console.log("formData", this.state.formData, "data", data, "email", data.target)
+        //axios.patch('https://localhost:44356/api/contact/Update?' + 'id=' + this.state.formData.id,  data  )
+        //axios.patch('https://localhost:44356/api/contact/Update?' + 'id=' + this.state.formData.id+'&name='+ )
     }
     render() {
         return (
@@ -21,9 +32,9 @@ class ShowForm extends React.Component {
                         <label for="email">Email</label><br />
                     <input type="text" id="email" name="email" style={{ height: "30px", width: "100%" }} value={this.props.isEdit ? this.state.formData.email : null} onChange={(e) => this.setFormData({ ...this.state.formDate, email: e.target.value })} /><br /><br/>
                         <label for="mobile">Mobile</label><br/>
-                    <input type="text" id="mobile" name="mobile" style={{ height: "30px", width: "50%", display: "inline-block" }} value={this.props.isEdit ? this.state.formData.mobile : null} onChange={(e) => this.setFormData({ ...this.state.formDate, mobile: e.target.value })} /><br/>
+                    <input type="number" id="mobile" name="mobile" style={{ height: "30px", width: "50%", display: "inline-block" }} value={this.props.isEdit ? this.state.formData.mobile : null} onChange={(e) => this.setFormData({ ...this.state.formDate, mobile: e.target.value })} /><br/>
                         <label for="landline">Landline</label><br/>
-                    <input type="text" id="landline" name="landline" style={{ height: "30px", width: "50%", display: "inline-block" }} value={this.props.isEdit ? this.state.formData.landline : null} onChange={(e) => this.setFormData({ ...this.state.formDate, landline: e.target.value })} /><br /><br/>
+                    <input type="number" id="landline" name="landline" style={{ height: "30px", width: "50%", display: "inline-block" }} value={this.props.isEdit ? this.state.formData.landline : null} onChange={(e) => this.setFormData({ ...this.state.formDate, landline: e.target.value })} /><br /><br/>
                         <label for="website">Website</label><br />
                     <input type="text" id="website" name="website" style={{ height: "30px", width: "100%" }} value={this.props.isEdit ? this.state.formData.website : null} onChange={(e) => this.setFormData({ ...this.state.formDate, website: e.target.value })} /><br /><br/>
                         <label for="address">Address</label><br />

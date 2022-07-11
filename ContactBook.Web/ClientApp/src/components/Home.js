@@ -17,46 +17,7 @@ export class Home extends Component {
             isEditForm: false,
             isAddForm: false,
 
-            contacts:[]
-            //    [
-            //    {
-            //        id: 1,
-            //        name: "Chandermani Arora",
-            //        email: "chandermani@technovert.com",
-            //        mobile: "904 543 6009",
-            //        landline: "786 21 3612456",
-            //        website: "gooogle.com",
-            //        address: "52 A/2 Mathura"
-            //    },
-            //    {
-            //        id: 2,
-            //        name: "Vaibhav Taunk",
-            //        email: "vaibhav.T@technovert.com",
-            //        mobile: "904 587 6765",
-            //        landline: "876 34 8364298",
-            //        website: "yahoo.com",
-            //        address: "123 Hyderawad"
-            //    },
-            //    {
-            //        id: 3,
-            //        name: "Bhagavan",
-            //        email: "Bhagawan.T@technovert.com",
-            //        mobile: "876 543 6009",
-            //        landline: "879 63 2785437",
-            //        website: "microsoft.com",
-            //        address: "876 Mathura "
-            //    },
-            //    {
-            //        id: 4,
-            //        name: "Pujitha",
-            //        email: "pujitha.k@technovert.com",
-            //        mobile: "835 443 6009",
-            //        landline: "323 42 7354238",
-            //        website: "technovert.com",
-            //        address: "345 Mathura"
-            //    }
-            //]
-            ,
+            contacts:[],
 
             currContact: null
         }
@@ -70,32 +31,33 @@ export class Home extends Component {
 
     componentDidMount() {
         this.setState({ currContact: this.state.contacts[0] });
-        axios.get("https://localhost:44356/Get") //
+        axios.get("https://localhost:44356/api/contact/Get") 
             .then(response => {
-                console.log(response.data)
                 this.setState({contacts: response.data})
             })
             .catch(error => {
                 console.log(error)
             })
 
-
     };
-
 
     setCurrContact(id) {
         this.setState({ currContact: this.state.contacts.find(c => c.id === id) });
+
     }
-    setShowForm(isEdit, isFormShow) {
+    setShowForm(isEdit, isFormShow)
+    {
         if (isEdit)
+        {
+            this.setState({ isAddForm: false });   
             this.setState({ isEditForm: isFormShow });
+        }
         else
             this.setState({ isAddForm: isFormShow });
     }
 
     addNewEmployee(event) {
-        event.preventDefault()
-        console.log("hi", event.target[0].value);
+        //event.preventDefault()
         let person = {
             name: event.target[0].value,
             email: event.target[1].value,
@@ -104,7 +66,7 @@ export class Home extends Component {
             website: event.target[4].value,
             address: event.target[5].value
 }
-        axios.post("https://localhost:44356/Create", person )
+        axios.post("https://localhost:44356/api/contact/Create", person )
             .then(function (response)
             {
                 console.log(response.data);
@@ -113,25 +75,26 @@ export class Home extends Component {
             {
                 console.log(error);
             });
-        //this.setState({
-        //    contacts: this.state.contacts.concat({
-        //        id: 5,
-        //        name: event.target[0].value,
-        //        email: event.target[1].value,
-        //        mobile: event.target[2].value,
-        //        landline: event.target[3].value,
-        //        website: event.target[4].value,
-        //        address: event.target[5].value
-        //    })
-        //});
+        this.setState({
+            contacts: this.state.contacts.concat({
+                name: event.target[0].value,
+                email: event.target[1].value,
+                mobile: event.target[2].value,
+                landline: event.target[3].value,
+                website: event.target[4].value,
+                address: event.target[5].value
+            })
+        });
     }
 
     deleteEmployee(id) {
-        //let contacts = [...this.state.contacts];
-        //contacts.splice(contacts.findIndex(c => c.id === id), 1);
-        //this.setState({ contacts: contacts });
-        //this.setState({currContact:null});
-        axios.delete("https://localhost:44356/Delete", {id:id}) //
+        const deleteId = id
+        console.log(id);
+        let contacts = [...this.state.contacts];
+        contacts.splice(contacts.findIndex(c => c.id === id), 1);
+        this.setState({ contacts: contacts });
+        this.setState({currContact:null});
+        axios.delete('https://localhost:44356/api/contact/Delete?contactId='+deleteId) 
             .then(response => {
                 console.log(response.data)
             })

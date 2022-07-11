@@ -3,6 +3,7 @@ using ContactBook.Backend.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace ContactBook.Backend.Services
 {
@@ -52,8 +53,8 @@ namespace ContactBook.Backend.Services
             context.Contacts.Remove(a);
             context.SaveChanges();
         }
-        public void Update(int id, string name,string email, string mobile, 
-            string landline, string website, string address) 
+        public void Update(int id, [Optional] string name, [Optional] string email, [Optional] string mobile,
+            [Optional] string landline, [Optional] string website, [Optional] string address) 
         {
             var x = context.Contacts.Single(y => y.id == id);
             x.Name = name;

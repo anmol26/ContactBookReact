@@ -1,7 +1,7 @@
 ﻿using ContactBook.Backend.Models;
 using ContactBook.Backend.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Runtime.InteropServices;
 
 namespace ContactBook.Backend.Controllers
 {
@@ -32,15 +32,6 @@ namespace ContactBook.Backend.Controllers
             return Ok();
         }
 
-        //[Route("Create")]
-        //[HttpPost]
-        //public IActionResult Create(string name,string email,string mobile,
-        //                               string landline,string website, string address)
-        //{
-
-        //    contactService.Create(name,email,mobile,landline,website,address);
-        //    return Ok();
-        //}
 
         [Route("Delete")]
         [HttpDelete]
@@ -53,8 +44,8 @@ namespace ContactBook.Backend.Controllers
 
         [Route("Update")]
         [HttpPatch]
-        public IActionResult Update(int id, string name, string email, string mobile,
-            string landline, string website, string address) 
+        public IActionResult Update(int id, [Optional]string name, [Optional]string email, [Optional]string mobile,
+            [Optional]string landline, [Optional]string website, [Optional]string address) 
         {
             contactService.Update(id, name, email, mobile, landline, website, address);
             return Ok();
