@@ -36,7 +36,9 @@ namespace ContactBook.Backend
                     policy =>
                     {
                         policy.WithOrigins("https://localhost:44356",
-                                            "https://localhost:44379");
+                                            "https://localhost:44379")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod(); ;
                     });
             });
 

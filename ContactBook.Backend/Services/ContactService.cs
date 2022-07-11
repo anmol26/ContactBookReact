@@ -26,6 +26,21 @@ namespace ContactBook.Backend.Services
             context.Contacts.Add(cont);
             context.SaveChanges();
         }
+
+        //public void Create(string name,string email, string mobile, string landline, string website, string address )
+        //{
+        //    Contact cont = new Contact
+        //    {
+        //        Name = name,
+        //        Email = email,
+        //        Address = address,
+        //        Mobile = mobile,
+        //        Landline = landline,
+        //        Website = website
+        //    };
+        //    context.Contacts.Add(cont);
+        //    context.SaveChanges();
+        //}
         public List<Contact> Get()
         {
             return context.Contacts.ToList();

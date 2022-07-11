@@ -80,7 +80,8 @@ export class Home extends Component {
             })
 
 
-    }
+    };
+
 
     setCurrContact(id) {
         this.setState({ currContact: this.state.contacts.find(c => c.id === id) });
@@ -94,24 +95,50 @@ export class Home extends Component {
 
     addNewEmployee(event) {
         event.preventDefault()
-        this.setState({
-            contacts: this.state.contacts.concat({
-                id: 5,
-                name: event.target[0].value,
-                email: event.target[1].value,
-                mobile: event.target[2].value,
-                landline: event.target[3].value,
-                website: event.target[4].value,
-                address: event.target[5].value
+        console.log("hi", event.target[0].value);
+        let person = {
+            name: event.target[0].value,
+            email: event.target[1].value,
+            mobile: event.target[2].value,
+            landline: event.target[3].value,
+            website: event.target[4].value,
+            address: event.target[5].value
+}
+        axios.post("https://localhost:44356/Create", person )
+            .then(function (response)
+            {
+                console.log(response.data);
             })
-        });
+            .catch(function (error) 
+            {
+                console.log(error);
+            });
+        //this.setState({
+        //    contacts: this.state.contacts.concat({
+        //        id: 5,
+        //        name: event.target[0].value,
+        //        email: event.target[1].value,
+        //        mobile: event.target[2].value,
+        //        landline: event.target[3].value,
+        //        website: event.target[4].value,
+        //        address: event.target[5].value
+        //    })
+        //});
     }
 
     deleteEmployee(id) {
-        let contacts = [...this.state.contacts];
-        contacts.splice(contacts.findIndex(c => c.id === id), 1);
-        this.setState({ contacts: contacts });
-        this.setState({currContact:null});
+        //let contacts = [...this.state.contacts];
+        //contacts.splice(contacts.findIndex(c => c.id === id), 1);
+        //this.setState({ contacts: contacts });
+        //this.setState({currContact:null});
+        axios.delete("https://localhost:44356/Delete", {id:id}) //
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
     editEmployee() {
         this.setShowForm(true, true);

@@ -2,8 +2,11 @@
 using ContactBook.Backend.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ContactBook.Backend.Controllers
 {
+    [Route("api/contact")]
+    [ApiController]
     public class ContactController : ControllerBase
     {
         private readonly IContactService contactService;
@@ -28,6 +31,16 @@ namespace ContactBook.Backend.Controllers
             contactService.Create(contact);
             return Ok();
         }
+
+        //[Route("Create")]
+        //[HttpPost]
+        //public IActionResult Create(string name,string email,string mobile,
+        //                               string landline,string website, string address)
+        //{
+
+        //    contactService.Create(name,email,mobile,landline,website,address);
+        //    return Ok();
+        //}
 
         [Route("Delete")]
         [HttpDelete]
