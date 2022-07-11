@@ -10,9 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="axios" Version="0.16.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.10" />
-    <PackageReference Include="RepoDb" Version="1.12.10" />
-    <PackageReference Include="RepoDb.SqlServer" Version="1.1.5" />
   </ItemGroup>
 
   <ItemGroup>

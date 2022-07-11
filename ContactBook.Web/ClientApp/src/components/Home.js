@@ -4,6 +4,7 @@ import blog from './Images/blog-icon.png';
 import Contact from './Contact';
 import ContactList from './ContactList';
 import ShowForm from './ShowForm';
+import axios from 'axios'; 
 
 export class Home extends Component {
     static displayName = Home.name;
@@ -16,44 +17,46 @@ export class Home extends Component {
             isEditForm: false,
             isAddForm: false,
 
-            contacts: [
-                {
-                    id: 1,
-                    name: "Chandermani Arora",
-                    email: "chandermani@technovert.com",
-                    mobile: "904 543 6009",
-                    landline: "786 21 3612456",
-                    website: "gooogle.com",
-                    address: "52 A/2 Mathura"
-                },
-                {
-                    id: 2,
-                    name: "Vaibhav Taunk",
-                    email: "vaibhav.T@technovert.com",
-                    mobile: "904 587 6765",
-                    landline: "876 34 8364298",
-                    website: "yahoo.com",
-                    address: "123 Hyderawad"
-                },
-                {
-                    id: 3,
-                    name: "Bhagavan",
-                    email: "Bhagawan.T@technovert.com",
-                    mobile: "876 543 6009",
-                    landline: "879 63 2785437",
-                    website: "microsoft.com",
-                    address: "876 Mathura "
-                },
-                {
-                    id: 4,
-                    name: "Pujitha",
-                    email: "pujitha.k@technovert.com",
-                    mobile: "835 443 6009",
-                    landline: "323 42 7354238",
-                    website: "technovert.com",
-                    address: "345 Mathura"
-                }
-            ],
+            contacts:[]
+            //    [
+            //    {
+            //        id: 1,
+            //        name: "Chandermani Arora",
+            //        email: "chandermani@technovert.com",
+            //        mobile: "904 543 6009",
+            //        landline: "786 21 3612456",
+            //        website: "gooogle.com",
+            //        address: "52 A/2 Mathura"
+            //    },
+            //    {
+            //        id: 2,
+            //        name: "Vaibhav Taunk",
+            //        email: "vaibhav.T@technovert.com",
+            //        mobile: "904 587 6765",
+            //        landline: "876 34 8364298",
+            //        website: "yahoo.com",
+            //        address: "123 Hyderawad"
+            //    },
+            //    {
+            //        id: 3,
+            //        name: "Bhagavan",
+            //        email: "Bhagawan.T@technovert.com",
+            //        mobile: "876 543 6009",
+            //        landline: "879 63 2785437",
+            //        website: "microsoft.com",
+            //        address: "876 Mathura "
+            //    },
+            //    {
+            //        id: 4,
+            //        name: "Pujitha",
+            //        email: "pujitha.k@technovert.com",
+            //        mobile: "835 443 6009",
+            //        landline: "323 42 7354238",
+            //        website: "technovert.com",
+            //        address: "345 Mathura"
+            //    }
+            //]
+            ,
 
             currContact: null
         }
@@ -63,11 +66,20 @@ export class Home extends Component {
         this.addNewEmployee = this.addNewEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
-
     }
 
     componentDidMount() {
         this.setState({ currContact: this.state.contacts[0] });
+        axios.get("https://localhost:44356/Get") //
+            .then(response => {
+                console.log(response.data)
+                this.setState({contacts: response.data})
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
     }
 
     setCurrContact(id) {
@@ -115,7 +127,7 @@ export class Home extends Component {
             </div>
             <div className="navigationBar">
                 <div className="navigations">
-                    <li><a href="">HOME</a></li>
+                    <li><a href="#">HOME</a></li>
                     <li onClick={() => this.setShowForm(false, true)} style={{cursor: "pointer"}}><a>+ADD</a></li>
                 </div>
                 <img src={blog} alt="blog-img" />
