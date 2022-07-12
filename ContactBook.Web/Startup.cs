@@ -20,6 +20,18 @@ namespace ContactBook.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.WithOrigins("https://localhost:44356",
+                                            "https://localhost:44379",
+                                            "http://localhost:3234")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                    });
+            });
 
             services.AddControllersWithViews();
 
@@ -47,7 +59,7 @@ namespace ContactBook.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseCors();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

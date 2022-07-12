@@ -53,17 +53,35 @@ namespace ContactBook.Backend.Services
             context.Contacts.Remove(a);
             context.SaveChanges();
         }
-        public void Update(int id, [Optional] string name, [Optional] string email, [Optional] string mobile,
-            [Optional] string landline, [Optional] string website, [Optional] string address) 
+        //public void Update(int id, [Optional] string name, [Optional] string email, [Optional] string mobile,
+        //    [Optional] string landline, [Optional] string website, [Optional] string address) 
+        //{
+        //    var x = context.Contacts.Single(y => y.id == id);
+        //    x.Name = name;
+        //    x.Email = email;
+        //    x.Mobile = mobile;
+        //    x.Landline = landline;
+        //    x.Website = website;
+        //    x.Address = address;
+        //    context.Contacts.Update(x);
+        //    context.SaveChanges();
+        //}
+        public void Update(Contact updatedContact)
         {
-            var x = context.Contacts.Single(y => y.id == id);
-            x.Name = name;
-            x.Email = email;
-            x.Mobile = mobile;
-            x.Landline = landline;
-            x.Website = website;
-            x.Address = address;
-            context.Contacts.Update(x);
+            var x = context.Contacts.Single(y => y.id == updatedContact.id);
+            x.Name = updatedContact.Name;
+            x.Email = updatedContact.Email;
+            x.Mobile = updatedContact.Mobile;
+            x.Landline = updatedContact.Landline;
+            x.Website = updatedContact.Website;
+            x.Address = updatedContact.Address;
+            //x.Name = name;
+            //x.Email = email;
+            //x.Mobile = mobile;
+            //x.Landline = landline;
+            //x.Website = website;
+            //x.Address = address;
+            //context.Contacts.Update(x);
             context.SaveChanges();
         }
 

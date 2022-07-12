@@ -42,13 +42,21 @@ namespace ContactBook.Backend.Controllers
             return Ok();
         }
 
+        //[Route("Update")]
+        //[HttpPatch]
+        //public IActionResult Update(int id, [Optional]string name, [Optional]string email, [Optional]string mobile,
+        //    [Optional]string landline, [Optional]string website, [Optional]string address) 
+        //{
+        //    contactService.Update(id, name, email, mobile, landline, website, address);
+        //    return Ok();
+        //}
         [Route("Update")]
         [HttpPatch]
-        public IActionResult Update(int id, [Optional]string name, [Optional]string email, [Optional]string mobile,
-            [Optional]string landline, [Optional]string website, [Optional]string address) 
+        public IActionResult Update(Contact updatedContact)
         {
-            contactService.Update(id, name, email, mobile, landline, website, address);
+            contactService.Update(updatedContact);
             return Ok();
         }
+
     }
 }

@@ -4,6 +4,7 @@ import blog from './Images/blog-icon.png';
 import Contact from './Contact';
 import ContactList from './ContactList';
 import ShowForm from './ShowForm';
+import UpdateForm from './UpdateForm';
 import axios from 'axios'; 
 
 export class Home extends Component {
@@ -106,6 +107,29 @@ export class Home extends Component {
     editEmployee() {
         this.setShowForm(true, true);
     }
+    UpdateEmployee(event) {
+        console.log("HIIIIIIIIIIIIIIIIIIIII", event.target[0].value)
+        console.log("homeeeeeee", event.target[1].value)
+        let person = {
+            id: event.target[0].value,
+            name: event.target[1].value,
+            email: event.target[2].value,
+            mobile: event.target[3].value,
+            landline: event.target[4].value,
+            website: event.target[5].value,
+            address: event.target[6].value
+        }
+        //console.log("homeeeeeee", this.state.currContact.id, person);
+        //event.preventDefault()
+        axios.patch('https://localhost:44356/api/contact/Update', person)
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     
   render () {
     return (
@@ -136,7 +160,7 @@ export class Home extends Component {
                     className="middleRight"
                     style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
                     {(this.state.isAddForm ? <ShowForm onClick={this.addNewEmployee} /> : null)}
-                    {(this.state.isEditForm ? <ShowForm formData={this.state.currContact} isEdit={true } /> : null)}
+                    {(this.state.isEditForm ? <UpdateForm onClick={this.UpdateEmployee } formData={this.state.currContact} isEdit={true } /> : null)}
                     {(this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null)}
                   
                 </div>

@@ -13,8 +13,10 @@ namespace ContactBook.Backend.Services.Interface
         public List<Contact> Get();
         public void Delete(int contactId);
 
-        public void Update(int id, [Optional] string name, [Optional] string email, [Optional] string mobile,
-            [Optional] string landline, [Optional] string website, [Optional] string address);
+        //public void Update(int id, [Optional] string name, [Optional] string email, [Optional] string mobile,
+        //    [Optional] string landline, [Optional] string website, [Optional] string address);
+
+        public void Update(Contact updatedContact);
 
     }
 }
