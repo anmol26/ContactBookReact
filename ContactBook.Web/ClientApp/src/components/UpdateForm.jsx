@@ -13,7 +13,7 @@ class UpdateForm extends React.Component {
 
             <div style={{ width: "100%", boxShadow: "0 0 10px 10px grey", display: "flex", flexFlow: "row wrap" }}>
                 <form onSubmit={this.props.onClick} style={{ padding: "30px" }} >
-                    <input type="text" id="EId" name="Eid" style={{ height: "30px", width: "100%" }} value={this.state.formData.id} /><br /><br />
+                    <input type="button" id="EId" name="Eid" style={{ height: "30px", width: "100%" }} value={ this.state.formData.id} /><br /><br />
                     <label for="name">Name</label><br />
                     <input type="text" id="name" name="name" style={{ height: "30px", width: "100%" }} value={this.props.isEdit ? this.state.formData.name : null} onChange={(e) => this.setState({ formData: { ...this.state.formData, name: e.target.value } })} /><br /><br />
                     <label for="email">Email</label><br />
