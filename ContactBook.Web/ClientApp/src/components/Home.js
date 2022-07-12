@@ -58,7 +58,6 @@ export class Home extends Component {
     }
 
     addNewEmployee(event) {
-        //event.preventDefault()
         let person = {
             name: event.target[0].value,
             email: event.target[1].value,
@@ -108,8 +107,6 @@ export class Home extends Component {
         this.setShowForm(true, true);
     }
     UpdateEmployee(event) {
-        console.log("HIIIIIIIIIIIIIIIIIIIII", event.target[0].value)
-        console.log("homeeeeeee", event.target[1].value)
         let person = {
             id: event.target[0].value,
             name: event.target[1].value,
@@ -119,8 +116,6 @@ export class Home extends Component {
             website: event.target[5].value,
             address: event.target[6].value
         }
-        //console.log("homeeeeeee", this.state.currContact.id, person);
-        //event.preventDefault()
         axios.patch('https://localhost:44356/api/contact/Update', person)
             .then(function (response) {
                 console.log(response.data);

@@ -9,6 +9,5 @@ namespace ContactBook.Backend.Models
         {
         }
         public DbSet<Contact> Contacts { get; set; }
-        //public DbSet<PostContact> PostContacts { get; set; }
     } 
 }
