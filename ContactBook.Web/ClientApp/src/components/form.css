@@ -1,0 +1,29 @@
+﻿.form {
+    width: 100%;
+    box-Shadow: 0 0 10px 10px grey;
+    display: flex; 
+    flex-Flow: row wrap;
+}
+    .form #EId {
+        padding: 2px;
+    }
+    .form #name, #email, #website {
+        height: 30px;
+        width: 100%;
+    }
+    .form #mobile, #landline {
+        height: 30px;
+        width: 50%;
+        display: inline-block;
+    }
+    .form textarea {
+        height: 80px;
+        width:100%;
+    }
+    .form #submit {
+        margin-Left: 300px;
+        background: #468c00;
+        padding: 10px 25px 10px 25px;
+        border: none;
+        color: white;
+    }

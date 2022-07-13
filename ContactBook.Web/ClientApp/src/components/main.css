@@ -105,6 +105,17 @@ body {
     padding-left: 15px;
     cursor: context-menu;
 }
+    .boxes #bname {
+        padding-Bottom: 5px;
+        font-Size: 28px;
+    }
+    .boxes #bemail {
+        margin-Left: 5px;
+    }
+    .boxes #bmobile {
+        padding-Bottom: 5px;
+        margin-Left: 5px;
+    }
 
     .boxes h2 {
         font-weight: lighter;
