@@ -23,7 +23,7 @@ class ShowForm extends React.Component {
                         <label for="website">Website</label><br />
                     <input type="text" id="website" name="website" style={{ height: "30px", width: "100%" }} value={this.props.isEdit ? this.state.formData.website : null} onChange={(e) => this.setState({ formData: { ...this.state.formData, website: e.target.value } })} /><br /><br/>
                         <label for="address">Address</label><br />
-                    <input type="text" id="address" name="address" style={{ height: "80px", width: "100%" }} value={this.props.isEdit ? this.state.formData.address : null} onChange={(e) => this.setState({ formData: { ...this.state.formData, address: e.target.value } })} /><br /><br/>
+                    <input type="textarea" id="address" name="address" style={{ height: "80px", width: "100%" }} value={this.props.isEdit ? this.state.formData.address : null} onChange={(e) => this.setState({ formData: { ...this.state.formData, address: e.target.value } })} /><br /><br/>
                         <input type="submit" style={{ marginLeft: "300px", background: "#468c00", padding: "10px 25px 10px 25px", border: "none", color: "white" }}  value={this.props.isEdit ?"Update" : "Add"} />
                     </form>
                 </div>

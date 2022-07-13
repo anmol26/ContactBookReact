@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-
+import './main.css';
 
 class ContactList extends React.Component {
 

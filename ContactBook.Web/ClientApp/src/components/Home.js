@@ -137,29 +137,27 @@ export class Home extends Component {
             <div className="navigationBar">
                 <div className="navigations">
                     <li><a href="#">HOME</a></li>
-                    <li onClick={() => this.setShowForm(false, true)} style={{cursor: "pointer"}}><a>+ADD</a></li>
+                    <li onClick={() => this.setShowForm(false, true)}><a>+ADD</a></li>
                 </div>
                 <img src={blog} alt="blog-img" />
             </div>
-            <div className="middle" style={{display: "flex", flexFlow: "row wrap"}}>
-                <div style={{display: "inline-Block"}} className="middleLeft">
-                    <p style={{margin: "30px 0 20px 20px", fontSize: "18px", fontWeight: "bold"}}>
-                            CONTACTS
-                        </p>
+            <div className="middle">
+                <div className="middleLeft">
+                    <p>CONTACTS</p>
                     <div className="box" id="contactList" >
                         <ContactList contacts={this.state.contacts} onContactSelected={this.setCurrContact} />
-                        </div>
                     </div>
+                </div>
                 <div
                     id="viewBox"
                     className="middleRight"
-                    style={{ marginLeft: "150px", marginTop: "60px", display: "flex", flexFlow: "row wrap" }}>
+                    >
                     {(this.state.isAddForm ? <ShowForm onClick={this.addNewEmployee} /> : null)}
                     {(this.state.isEditForm ? <UpdateForm onClick={this.UpdateEmployee } formData={this.state.currContact} isEdit={true } /> : null)}
                     {(this.state.currContact ? <Contact onDelete={this.deleteEmployee} onEdit={this.editEmployee} contact={this.state.currContact} /> : null)}
                   
                 </div>
-                </div>
+            </div>
             
       </div>
     );
