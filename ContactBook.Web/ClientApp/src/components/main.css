@@ -47,6 +47,28 @@ body {
         right: 150px;
         padding-top: 8px;
     }
+.contact {
+    margin-Top: 20px;
+}
+.contactName {
+    font-Size: 30px;
+    font-Weight: bold;
+    color: #333333;
+}
+.contactEditIcon {
+    margin-Left: 35px;
+    height: 15px;
+    width: 15px;
+}
+.contactDeleteIcon {
+    margin-Left: 20px;
+    height: 15px;
+    width: 15px;
+}
+.contact span {
+        font-size:15px;
+}
+
 .middle {
     display: flex;
     flex-Flow: row wrap;
